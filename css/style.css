@@ -837,6 +837,21 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
   .form-card { padding: 16px; }
 }
 
+@media (max-width: 640px) {
+  .form-card {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    padding: 0;
+    border-inline: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  #monday-workform-placeholder {
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
+
 #monday-workform-placeholder {
   width: 100%;
   max-width: 650px;
