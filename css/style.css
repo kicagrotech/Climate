@@ -935,8 +935,10 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
 }
 .partners-logos a {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   opacity: 0.9;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
@@ -948,6 +950,12 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
   height: 42px;
   width: auto;
   object-fit: contain;
+}
+.partner-link-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
 }
 
 @media (max-width: 640px) {
