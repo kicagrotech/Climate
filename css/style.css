@@ -565,6 +565,9 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
   position: static;
   transform: none;
 }
+.ecosystem-mobile .eco-node::before {
+  display: none;
+}
 
 /* ==========================================================================
    Audience grid
@@ -757,16 +760,6 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
     top: 0; bottom: 0; right: 20px; left: auto; width: 2px; height: auto;
   }
   .timeline-stage { padding-right: 46px; margin-bottom: 24px; }
-  .timeline-stage::after {
-    content: "";
-    position: absolute;
-    top: 28px;
-    right: 15px;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 3px solid var(--bg-light-blue);
-  }
 }
 
 /* ==========================================================================
@@ -915,6 +908,43 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
 .contact-email:hover { color: var(--text-dark); border-color: var(--text-dark); }
 
 /* ==========================================================================
+   Partners
+   ========================================================================== */
+
+.partners-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+.partners-logos a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.partners-logos a:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+.partners-logos img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .partners-logos { flex-wrap: nowrap; gap: 22px; }
+  .partners-logos img { height: 32px; }
+}
+@media (max-width: 380px) {
+  .partners-logos { gap: 14px; }
+  .partners-logos img { height: 26px; }
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -933,6 +963,14 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
   border-bottom: 1px solid var(--border-soft);
 }
 .footer-logos img { height: 30px; width: auto; object-fit: contain; opacity: 0.85; }
+
+@media (max-width: 768px) {
+  .footer-logos img:nth-child(2) {
+    flex: 1 1 100%;
+    order: -1;
+    margin-bottom: 4px;
+  }
+}
 
 .footer-bottom {
   display: flex;
@@ -1113,9 +1151,14 @@ html.a11y-stop-animations .reveal { opacity: 1; transform: none; transition: non
 @media (max-width: 768px) {
   .partner-strip img { height: 30px; }
   .partner-strip .container { gap: 22px; }
+  .partner-strip .container img:nth-child(2) {
+    flex: 1 1 100%;
+    order: -1;
+    margin-bottom: 4px;
+  }
   .section { padding: 60px 0; }
   .hero-content { padding-block: 60px 44px; }
-  .audience-grid { grid-template-columns: 1fr 1fr; }
+  .audience-grid { grid-template-columns: 1fr; }
   :root { --header-h-compact: 112px; }
 }
 
