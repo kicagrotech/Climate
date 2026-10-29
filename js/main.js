@@ -4,7 +4,7 @@
   /* ==========================================================================
      Contact email — update in ONE place before publishing
      ========================================================================== */
-  var CONTACT_EMAIL = "afik.contact@example.com";
+  var CONTACT_EMAIL = "climate.admissions@maoz-il.org";
 
   document.querySelectorAll("[data-email-link]").forEach(function (el) {
     el.setAttribute("href", "mailto:" + CONTACT_EMAIL);
