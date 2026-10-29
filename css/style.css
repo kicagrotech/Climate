@@ -1169,6 +1169,9 @@ html.a11y-high-contrast .deadline-banner .btn-primary { background: #fff; color:
   transition: opacity 700ms ease, transform 700ms ease;
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.blue * { color: #3E8AA3}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
