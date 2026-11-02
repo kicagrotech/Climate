@@ -311,10 +311,12 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   top: 100%;
   right: 0;
   left: 0;
-  max-height: calc(100vh - 100%);
+  max-height: none;
   background: var(--white);
   z-index: 999;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 24px;
   border-top: 1px solid var(--border-soft);
   box-shadow: 0 16px 32px rgba(27,25,38,0.12);

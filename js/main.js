@@ -35,17 +35,30 @@
   var hamburgerBtn = document.getElementById("hamburgerBtn");
   var mobileNav = document.getElementById("mobileNav");
 
+  function resizeMobileNav() {
+    if (!mobileNav.classList.contains("is-open")) return;
+    var viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    var navTop = mobileNav.getBoundingClientRect().top;
+    mobileNav.style.maxHeight = Math.max(0, viewportHeight - navTop) + "px";
+  }
+
   function openMobileNav() {
     mobileNav.classList.add("is-open");
+    resizeMobileNav();
     hamburgerBtn.setAttribute("aria-expanded", "true");
     hamburgerBtn.setAttribute("aria-label", "סגירת תפריט ניווט");
     document.body.style.overflow = "hidden";
   }
   function closeMobileNav() {
     mobileNav.classList.remove("is-open");
+    mobileNav.style.maxHeight = "";
     hamburgerBtn.setAttribute("aria-expanded", "false");
     hamburgerBtn.setAttribute("aria-label", "פתיחת תפריט ניווט");
     document.body.style.overflow = "";
+  }
+  window.addEventListener("resize", resizeMobileNav);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", resizeMobileNav);
   }
   hamburgerBtn.addEventListener("click", function () {
     var isOpen = mobileNav.classList.contains("is-open");
