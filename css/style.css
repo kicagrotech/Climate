@@ -277,7 +277,8 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   border-radius: 8px;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
-.nav-links a:hover { background: var(--bg-pale-blue); color: var(--accent-deep); }
+.nav-links a:hover,
+.nav-links a[aria-current="location"] { background: var(--bg-pale-blue); color: var(--accent-deep); }
 
 .nav-cta { display: flex; align-items: center; gap: 14px; }
 .nav-cta .btn { padding: 12px 24px; font-size: 0.95rem; }
@@ -333,6 +334,7 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   border-bottom: 1px solid var(--border-soft);
   min-height: 44px;
 }
+.mobile-nav a[aria-current="location"] { background: var(--bg-pale-blue); color: var(--accent-deep); }
 .mobile-nav .btn { margin-top: 20px; }
 
 /* ==========================================================================
@@ -831,6 +833,34 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
 .form-card {
   width: 100%;
   min-width: 0;
+}
+.application-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.application-option {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 32px 24px;
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+.application-option h3 {
+  color: var(--text-dark);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 700;
+}
+@media (max-width: 640px) {
+  .application-options { grid-template-columns: 1fr; }
+  .application-option { min-height: 180px; }
 }
 .formtitan-embed {
   width: 100%;

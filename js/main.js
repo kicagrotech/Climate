@@ -30,6 +30,50 @@
   onScroll();
 
   /* ==========================================================================
+     Active section indicator in navigation
+     ========================================================================== */
+  var sectionLinks = Array.from(document.querySelectorAll(".nav-links a[href^='#']"));
+  var navSections = sectionLinks
+    .map(function (link) { return document.querySelector(link.getAttribute("href")); })
+    .filter(function (section, index, sections) {
+      return section && sections.indexOf(section) === index;
+    });
+  var activeSectionFrame = 0;
+
+  function updateActiveSection() {
+    activeSectionFrame = 0;
+    var activationLine = siteHeader.getBoundingClientRect().bottom + 24;
+    var activeSection = null;
+
+    navSections.forEach(function (section) {
+      if (section.getBoundingClientRect().top <= activationLine) {
+        activeSection = section;
+      }
+    });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      activeSection = navSections[navSections.length - 1] || null;
+    }
+
+    document.querySelectorAll(".nav-links a[href^='#'], .mobile-nav ul a[href^='#']").forEach(function (link) {
+      var isActive = activeSection && link.getAttribute("href") === "#" + activeSection.id;
+      if (isActive) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  function scheduleActiveSectionUpdate() {
+    if (!activeSectionFrame) {
+      activeSectionFrame = window.requestAnimationFrame(updateActiveSection);
+    }
+  }
+  document.addEventListener("scroll", scheduleActiveSectionUpdate, { passive: true });
+  window.addEventListener("resize", scheduleActiveSectionUpdate);
+  scheduleActiveSectionUpdate();
+
+  /* ==========================================================================
      Mobile navigation
      ========================================================================== */
   var hamburgerBtn = document.getElementById("hamburgerBtn");
