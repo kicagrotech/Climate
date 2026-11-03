@@ -81,9 +81,11 @@
 
   function resizeMobileNav() {
     if (!mobileNav.classList.contains("is-open")) return;
-    var viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    var viewportHeight = document.documentElement.clientHeight;
     var navTop = mobileNav.getBoundingClientRect().top;
-    mobileNav.style.maxHeight = Math.max(0, viewportHeight - navTop) + "px";
+    var availableHeight = Math.max(0, viewportHeight - navTop);
+    mobileNav.style.height = availableHeight + "px";
+    mobileNav.style.maxHeight = availableHeight + "px";
   }
 
   function openMobileNav() {
@@ -95,6 +97,7 @@
   }
   function closeMobileNav() {
     mobileNav.classList.remove("is-open");
+    mobileNav.style.height = "";
     mobileNav.style.maxHeight = "";
     hamburgerBtn.setAttribute("aria-expanded", "false");
     hamburgerBtn.setAttribute("aria-label", "פתיחת תפריט ניווט");

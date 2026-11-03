@@ -319,6 +319,7 @@ section[id] { scroll-margin-top: var(--header-h-compact); }
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   padding: 24px;
+  padding-bottom: 112px;
   border-top: 1px solid var(--border-soft);
   box-shadow: 0 16px 32px rgba(27,25,38,0.12);
 }
