@@ -739,6 +739,7 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
 }
 .timeline-date {
   display: inline-block;
+  direction: ltr;
   margin-top: 8px;
   font-size: 0.92rem;
   font-weight: 700;
