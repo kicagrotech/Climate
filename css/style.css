@@ -1042,6 +1042,70 @@ html.a11y-stop-animations .wave-anim path { animation: none !important; }
 .footer-contact-icon { width: 14px; height: 14px; flex-shrink: 0; }
 .footer-separator { color: var(--text-muted); }
 
+/* Floating registration and contact actions */
+.floating-actions {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1400;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  max-width: calc(100vw - 36px);
+  background: var(--bg-main);
+  direction: rtl;
+}
+.floating-action {
+  min-height: 76px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  background: var(--text-dark);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(27,25,38,0.24);
+  text-decoration: none;
+}
+.floating-action--apply {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 188px;
+  padding: 12px 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.floating-action--apply svg { width: 34px; height: 34px; flex: 0 0 auto; color: var(--bg-pale-blue-2); }
+.floating-action--contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 126px;
+  padding: 8px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.floating-contact-links { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.floating-contact-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.floating-contact-links a:first-child { color: #2daa5a; }
+.floating-contact-links svg { display: block; width: 30px; height: 30px; }
+.floating-contact-links a:last-child svg { width: 26px; height: 26px; }
+.floating-action--apply:hover { background: var(--accent-deep); }
+.floating-action--apply:focus-visible,
+.floating-contact-links a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.floating-contact-links a:hover { background: rgba(255,255,255,0.16); transform: scale(1.08); }
+.floating-contact-links a:last-child:hover { color: var(--bg-pale-blue-2); }
+
 /* ==========================================================================
    Accessibility widget
    ========================================================================== */
@@ -1228,4 +1292,30 @@ html.a11y-stop-animations .reveal { opacity: 1; transform: none; transition: non
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-deadline { justify-content: center; }
   .deadline-banner .btn { width: auto; }
+}
+
+@media (max-width: 600px) {
+  body { padding-bottom: 94px; }
+  .floating-actions {
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 78px;
+    max-width: none;
+    gap: 6px;
+  }
+  .floating-action { min-height: 70px; }
+  .floating-action--apply {
+    flex: 1 1 58%;
+    width: auto;
+    gap: 7px;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+  .floating-action--apply svg { width: 29px; height: 29px; }
+  .floating-action--contact {
+    flex: 1 1 42%;
+    width: auto;
+    padding: 6px;
+    font-size: 0.88rem;
+  }
 }
