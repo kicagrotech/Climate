@@ -130,6 +130,19 @@
   });
 
   /* ==========================================================================
+     FAQ — keep only one answer open at a time
+     ========================================================================== */
+  var faqItems = document.querySelectorAll("#faq .faq-item");
+  faqItems.forEach(function (item) {
+    item.addEventListener("toggle", function () {
+      if (!item.open) return;
+      faqItems.forEach(function (otherItem) {
+        if (otherItem !== item) otherItem.open = false;
+      });
+    });
+  });
+
+  /* ==========================================================================
      Reveal-on-scroll
      ========================================================================== */
   var revealEls = document.querySelectorAll(".reveal");
